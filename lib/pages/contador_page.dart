@@ -9,52 +9,68 @@ class ContadorPage extends StatefulWidget {
 
 class _ContadorPageState extends State<ContadorPage> {
   int counter = 0;
+  final _txtSty1 =
+      TextStyle(color: Color.fromRGBO(61, 90, 128, 1), fontSize: 25);
+  final _btnSty = Color.fromRGBO(152, 193, 217, 1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(224, 251, 252, 1),
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(41, 50, 65, 1),
           title: Center(
-            child: Text('Contador'),
+            child: Text('Counter', style: TextStyle(fontSize: 23)),
           ),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Contador:', style: TextStyle(fontSize: 25.0)),
-              Text('$counter', style: TextStyle(fontSize: 30.0))
+              Text('Count:', style: _txtSty1),
+              Text('$counter', style: _txtSty1)
             ],
           ),
         ),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              child: Icon(Icons.remove),
-              onPressed: () {
-                setState(() {
-                  counter++;
-                });
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(Icons.exposure_zero),
-              onPressed: () {
-                setState(() {
-                  counter--;
-                });
-              },
-            ),
-            FloatingActionButton(
-              child: Icon(Icons.add),
-              onPressed: () {
-                setState(() {
-                  counter = 0;
-                });
-              },
-            ),
-          ],
-        ));
+        floatingActionButton: _buttonsContainer());
+  }
+
+  Widget _buttonsContainer() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        SizedBox(
+          width: 30,
+        ),
+        FloatingActionButton(
+          backgroundColor: _btnSty,
+          child: Icon(Icons.exposure_zero),
+          onPressed: () {
+            setState(() {
+              counter = 0;
+            });
+          },
+        ),
+        Expanded(child: SizedBox()),
+        FloatingActionButton(
+          backgroundColor: _btnSty,
+          child: Icon(Icons.remove),
+          onPressed: () {
+            setState(() {
+              counter--;
+            });
+          },
+        ),
+        SizedBox(width: 10),
+        FloatingActionButton(
+          backgroundColor: _btnSty,
+          child: Icon(Icons.add),
+          onPressed: () {
+            setState(() {
+              counter++;
+            });
+          },
+        ),
+      ],
+    );
   }
 }
