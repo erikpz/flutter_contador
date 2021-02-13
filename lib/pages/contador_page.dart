@@ -10,7 +10,7 @@ class ContadorPage extends StatefulWidget {
 class _ContadorPageState extends State<ContadorPage> {
   int counter = 0;
   final _txtSty1 =
-      TextStyle(color: Color.fromRGBO(61, 90, 128, 1), fontSize: 25);
+      TextStyle(color: Color.fromRGBO(61, 90, 128, 1), fontSize: 26);
   final _btnSty = Color.fromRGBO(152, 193, 217, 1);
   @override
   Widget build(BuildContext context) {
